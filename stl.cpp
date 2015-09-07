@@ -1,74 +1,13 @@
-#include <stdio.h>
-#include <string.h>
-#include <iostream>
-#include <list>
-#include <stdlib.h>
 #include <student.h>
 
 
 using namespace std;
 
 
-list<student> info;
-
-void Add()
-{
-	printf("Enter Name of Student:");	
-	char name[100];
-	scanf("%s",name);
-	student s(student::giveid(),name);
-	info.push_back(s);
-}
-
-void Delete()
-{
-	printf("Enter id of student:");
-	int id;
-	scanf("%d",&id);
-	for(list<student>::iterator it = info.begin(); it != info.end(); it++)
-	{
-		if(id == (*it).id)
-		{
-			info.erase(it);
-			return;
-		}	
-	}
-	printf("\nstudent not found\n");
-}
-
-void Find()
-{
-	printf("Enter id of student:");
-	int id;
-	scanf("%d",&id);
-	for(list<student>::iterator it = info.begin(); it != info.end(); it++)
-	{
-		if(id == (*it).id)
-		{
-			printf("\nStudent Name:%s\n",(*it).name);
-			return;
-		}	
-	}
-	printf("\nstudent not found\n");
-	
-}
-
-void Display()
-{
-	for(list<student>::iterator it = info.begin(); it != info.end(); it++)
-	{
-		printf("\nID:%d\tName:%s",(*it).id,(*it).name);
-	}
-}
 int main()
 {
-	/*
-	char name[100] = "Rahul Shah";
-	student st(1,name);
-	student st2(st);
-	student st3(2,"Binal Shah");
-	st3 = st2;*/
 
+	student_manager sm;
 	int choice;
 	
 	do
@@ -86,16 +25,16 @@ int main()
 		switch(choice)
 		{
 			case 1:
-				Add();
+				sm.Add();
 				break;
 			case 2:
-				Delete();
+				sm.Delete();
 				break;
 			case 3:
-				Find();
+				sm.Find();
 				break;
 			case 4:
-				Display();
+				sm.Display();
 				break;
 			default:
 				return 0;
@@ -107,7 +46,4 @@ int main()
 
 //TODO
 //eclipse project
-//make file
-//unit testing
-//class refactoring, different file
 
